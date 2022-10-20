@@ -5,7 +5,6 @@ import com.codeborne.selenide.WebDriverRunner;
 import demowebshopTests.pages.RegistrationPage;
 import io.restassured.RestAssured;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Cookie;
 
@@ -69,9 +68,32 @@ public class DemowebshopTests extends TestBase {
             ;
         });
         }
+@Test
+    void registrationUIAndApi(){
+    step("Создание пользователя чере запрос", () ->
+    {
+        registrationApi();
+    });
+    step("Открытие страницы с профилем пользователя", () ->
+    {
+        registrationPage
+                .openProfilePage();
+    });
+    step("Изменение имени и фамилии пользователя", () ->
+    {
+        registrationPage
+                .setFirstName(newFirstName)
+                .setLastName(newLastName)
+                .clickSaveButton();
+    });
+    step("Проверка, что данные изменились", () ->
+    {
+        registrationPage
+                .checkUpdatedUser(newFirstName,newLastName);
+    });
+}
 
-    @Test
-    @DisplayName("Регистрация и изменение профиля через API")
+
     void registrationApi() {
         String authCookieName = "NOPCOMMERCE.AUTH";
         String authCookieValue = given()
@@ -96,16 +118,6 @@ public class DemowebshopTests extends TestBase {
         open("https://demowebshop.tricentis.com/customer/info");
         registrationPage.checkRegistration(email);
 
-        given()
-                .when()
-                .contentType("application/x-www-form-urlencoded; charset=utf-8")
-                .formParam("FirstName", newFirstName)
-                .formParam("LastName", newLastName)
-                .post(baseURI+"customer/info")
-                .then()
-                .log().all();
-        open("https://demowebshop.tricentis.com/customer/info");
-        System.out.println(firstName);
     }
 }
 
