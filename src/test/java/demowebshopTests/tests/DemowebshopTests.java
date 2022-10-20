@@ -70,7 +70,6 @@ public class DemowebshopTests extends TestBase {
         });
         }
 
-
     @Test
     @DisplayName("Регистрация и изменение профиля через API")
     void registrationApi() {

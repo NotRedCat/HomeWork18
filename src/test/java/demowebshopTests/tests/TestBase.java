@@ -1,6 +1,7 @@
 package demowebshopTests.tests;
 
 import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import demowebshopTests.helpers.Attach;
 import io.qameta.allure.selenide.AllureSelenide;
@@ -20,7 +21,6 @@ public class TestBase {
         DesiredCapabilities capabilities = new DesiredCapabilities();
 
         Configuration.browserCapabilities = capabilities;
-        Configuration.baseUrl = "https://demoqa.com/";
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(
                 "enableVNC", true,
                 "enableVideo", true
@@ -42,12 +42,16 @@ public class TestBase {
         }
     }
 
-
     @AfterEach
     void addAttachments() {
-        Attach.screenshotAs("Last screenshot");
+        Attach.screenshotsAs("Last screenshot");
         Attach.pageSource();
         Attach.browserConsoleLogs();
-        Attach.addVideo();
+        if (System.getProperty("remote_url") != null) {
+            Attach.addVideo();
+        }
+        Selenide.closeWebDriver();
+
     }
+
 }
