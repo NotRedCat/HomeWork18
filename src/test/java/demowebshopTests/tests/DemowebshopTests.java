@@ -102,7 +102,7 @@ public class DemowebshopTests extends TestBase {
                 .formParam(verificationTokenName, verificationTokenBodyValue)
                 .formParam("FirstName", firstName)
                 .formParam("LastName", lastName)
-                .formParam("Email", email)
+                .formParam("Email", emailAPI)
                 .formParam("Password", password)
                 .formParam("ConfirmPassword", password)
                 .cookie(verificationTokenName, verificationTokenHeaderValue)
@@ -116,7 +116,7 @@ public class DemowebshopTests extends TestBase {
         Cookie cookie = new Cookie(authCookieName, authCookieValue);
         WebDriverRunner.getWebDriver().manage().addCookie(cookie);
         open("https://demowebshop.tricentis.com/customer/info");
-        registrationPage.checkRegistration(email);
+        registrationPage.checkRegistration(emailAPI);
 
     }
 }

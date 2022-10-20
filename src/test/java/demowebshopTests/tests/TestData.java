@@ -12,6 +12,7 @@ import static demowebshopTests.utils.RandomUtils.getRandomGender;
                 lastName = faker.name().lastName(),
                 newLastName = faker.name().firstName(),
                 email = faker.internet().emailAddress(),
+                emailAPI = faker.internet().emailAddress(),
                 password = faker.internet().password(),
                 gender = getRandomGender();
 
