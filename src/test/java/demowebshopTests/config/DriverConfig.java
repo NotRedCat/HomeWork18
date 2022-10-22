@@ -6,7 +6,7 @@ import org.aeonbits.owner.Config;
 import java.net.URI;
 
 @Config.Sources({
-       "classpath:${properties}.properties"
+        "classpath:${properties}.properties"
 
 })
 
