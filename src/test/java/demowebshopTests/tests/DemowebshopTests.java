@@ -35,7 +35,7 @@ public class DemowebshopTests extends TestBase {
         });
         step("Заполнение полей сгенерированными данными и отправка формы", () ->
         {
-        registrationPage
+            registrationPage
                     .setGender(gender)
                     .setFirstName(firstName)
                     .setLastName(lastName)
@@ -67,31 +67,32 @@ public class DemowebshopTests extends TestBase {
                     .checkUpdatedUser(newFirstName, newLastName)
             ;
         });
-        }
-@Test
-    void registrationUIAndApi(){
-    step("Создание пользователя чере запрос", () ->
-    {
-        registrationApi();
-    });
-    step("Открытие страницы с профилем пользователя", () ->
-    {
-        registrationPage
-                .openProfilePage();
-    });
-    step("Изменение имени и фамилии пользователя", () ->
-    {
-        registrationPage
-                .setFirstName(newFirstName)
-                .setLastName(newLastName)
-                .clickSaveButton();
-    });
-    step("Проверка, что данные изменились", () ->
-    {
-        registrationPage
-                .checkUpdatedUser(newFirstName,newLastName);
-    });
-}
+    }
+
+    @Test
+    void registrationUIAndApi() {
+        step("Создание пользователя чере запрос", () ->
+        {
+            registrationApi();
+        });
+        step("Открытие страницы с профилем пользователя", () ->
+        {
+            registrationPage
+                    .openProfilePage();
+        });
+        step("Изменение имени и фамилии пользователя", () ->
+        {
+            registrationPage
+                    .setFirstName(newFirstName)
+                    .setLastName(newLastName)
+                    .clickSaveButton();
+        });
+        step("Проверка, что данные изменились", () ->
+        {
+            registrationPage
+                    .checkUpdatedUser(newFirstName, newLastName);
+        });
+    }
 
 
     void registrationApi() {
@@ -106,7 +107,7 @@ public class DemowebshopTests extends TestBase {
                 .formParam("Password", password)
                 .formParam("ConfirmPassword", password)
                 .cookie(verificationTokenName, verificationTokenHeaderValue)
-                .post(baseURI+"register")
+                .post(baseURI + "register")
                 .then()
                 .log().all()
                 .extract()

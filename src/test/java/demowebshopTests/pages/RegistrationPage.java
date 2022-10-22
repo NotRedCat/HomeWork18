@@ -11,7 +11,7 @@ public class RegistrationPage {
     private SelenideElement
             firstNameInput = $("#FirstName"),
 
-            lastNameInput = $("#LastName"),
+    lastNameInput = $("#LastName"),
             emailInput = $("#Email"),
             passwordInput = $("#Password"),
             confirmPasswordInput = $("#ConfirmPassword"),
@@ -21,7 +21,7 @@ public class RegistrationPage {
 
 
     private final static String REGISTRATION_TITLE_TEXT = "Register",
-    PROFILE_TITLE_TEXT = "My account - Customer info";
+            PROFILE_TITLE_TEXT = "My account - Customer info";
 
     public RegistrationPage openRegisterPage() {
         open("register");
@@ -32,7 +32,7 @@ public class RegistrationPage {
     }
 
     public RegistrationPage setGender(String gender) {
-        $("#gender-"+ TestData.gender).click();
+        $("#gender-" + TestData.gender).click();
         return this;
     }
 
@@ -72,9 +72,9 @@ public class RegistrationPage {
     }
 
     public RegistrationPage openProfilePage() {
-            open("customer/info");
-            $(".page-title").shouldHave(text(PROFILE_TITLE_TEXT));
-            return this;
+        open("customer/info");
+        $(".page-title").shouldHave(text(PROFILE_TITLE_TEXT));
+        return this;
     }
 
     public RegistrationPage clickSaveButton() {
