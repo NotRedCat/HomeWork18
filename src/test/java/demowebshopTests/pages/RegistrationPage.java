@@ -26,8 +26,6 @@ public class RegistrationPage {
     public RegistrationPage openRegisterPage() {
         open("register");
         $(".page-title").shouldHave(text(REGISTRATION_TITLE_TEXT));
-        executeJavaScript("$('footer').remove()");
-        executeJavaScript("$('#fixedban').remove()");
         return this;
     }
 
