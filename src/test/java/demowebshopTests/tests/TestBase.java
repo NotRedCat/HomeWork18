@@ -36,7 +36,7 @@ public class TestBase {
             capabilities.setCapability("browserName", config.getBrowser());
             capabilities.setCapability("baseURI", config.getBaseURI());
             Configuration.browserSize = config.getBrowserSize();
-            Configuration.remote = config.getRemoteURL();
+            Configuration.remote = System.getProperty("remote_url");
             Configuration.baseUrl = config.getBaseUrl();
             Configuration.browserVersion= config.getBrowserVersion();
         } else {
