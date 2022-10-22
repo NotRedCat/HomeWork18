@@ -31,14 +31,16 @@ public class TestBase {
         System.setProperty("properties", "remote");
         DriverConfig config = ConfigFactory.create(DriverConfig.class, System.getProperties());
 
+        if (config.getRemoteURL() != null) {
+            Configuration.remote = config.getRemoteURL();
+        }
         capabilities.setCapability("browserName", config.getBrowser());
         capabilities.setCapability("baseURI", config.getBaseURI());
         Configuration.browserSize = config.getBrowserSize();
-        Configuration.remote = config.getRemoteURL();
         Configuration.baseUrl = config.getBaseUrl();
         Configuration.browserVersion = config.getBrowserVersion();
-
     }
+
 
     @AfterEach
     void addAttachments() {

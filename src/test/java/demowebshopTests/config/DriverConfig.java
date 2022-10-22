@@ -3,8 +3,6 @@ package demowebshopTests.config;
 
 import org.aeonbits.owner.Config;
 
-import java.net.URI;
-
 @Config.Sources({
         "classpath:${properties}.properties"
 
@@ -29,11 +27,10 @@ public interface DriverConfig extends Config {
     String getBrowserSize();
 
     @Key("remoteUrl")
-    @DefaultValue("")
     String getRemoteURL();
 
     @Key("baseURI")
     @DefaultValue("http://demowebshop.tricentis.com/")
-    URI getBaseURI();
+    String getBaseURI();
 
 }
