@@ -2,10 +2,8 @@ package demowebshopTests.tests;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
-import demowebshopTests.config.DriverConfig;
 import demowebshopTests.helpers.Attach;
 import io.qameta.allure.selenide.AllureSelenide;
-import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -18,7 +16,6 @@ public class TestBase {
 
     @BeforeAll
     static void configure() throws MalformedURLException {
-
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
         DesiredCapabilities capabilities = new DesiredCapabilities();
 
@@ -28,20 +25,21 @@ public class TestBase {
                 "enableVideo", true
         ));
 
-        System.setProperty("properties", "remote");
-        DriverConfig config = ConfigFactory.create(DriverConfig.class, System.getProperties());
 
-        if (config.getRemoteURL() != null) {
-            Configuration.remote = config.getRemoteURL();
+        if (System.getProperty("remote_url") != null) {
+
+            Configuration.browser = System.getProperty("browser_name");
+            Configuration.browserVersion = System.getProperty("browser_version");
+            Configuration.browserSize = System.getProperty("browser_size");
+            Configuration.remote = System.getProperty("remote_url");
+        } else {
+            capabilities.setCapability("browserName", "chrome");
+            capabilities.setCapability("browserVersion", "100.0");
+            Configuration.browserSize = "1800x1200";
+
+
         }
-        capabilities.setCapability("browserName", config.getBrowser());
-        capabilities.setCapability("baseURI", config.getBaseURI());
-        Configuration.browserSize = config.getBrowserSize();
-        Configuration.baseUrl = config.getBaseUrl();
-        Configuration.browserVersion = config.getBrowserVersion();
     }
-
-
     @AfterEach
     void addAttachments() {
         Attach.screenshotsAs("Last screenshot");
