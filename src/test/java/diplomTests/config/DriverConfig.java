@@ -1,4 +1,4 @@
-package demowebshopTests.config;
+package diplomTests.config;
 
 
 import org.aeonbits.owner.Config;

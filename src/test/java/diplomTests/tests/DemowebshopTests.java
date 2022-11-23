@@ -1,17 +1,15 @@
-package demowebshopTests.tests;
+package diplomTests.tests;
 
 import com.codeborne.selenide.Configuration;
-import com.codeborne.selenide.WebDriverRunner;
-import demowebshopTests.pages.RegistrationPage;
+import diplomTests.pages.RegistrationPage;
 import io.restassured.RestAssured;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.Cookie;
+
 import static org.hamcrest.Matchers.is;
 import static com.codeborne.selenide.Selenide.open;
-import static demowebshopTests.tests.TestData.*;
+import static diplomTests.tests.TestData.*;
 import static io.qameta.allure.Allure.step;
-import static io.restassured.RestAssured.baseURI;
 import static io.restassured.RestAssured.given;
 public class DemowebshopTests extends TestBase {
     private final String verificationTokenName = "__RequestVerificationToken",

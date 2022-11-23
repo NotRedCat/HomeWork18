@@ -1,4 +1,4 @@
-package demowebshopTests.utils;
+package diplomTests.utils;
 
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.Random;

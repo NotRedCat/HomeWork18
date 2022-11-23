@@ -1,8 +1,8 @@
-package demowebshopTests.tests;
+package diplomTests.tests;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.logevents.SelenideLogger;
-import demowebshopTests.helpers.Attach;
+import diplomTests.helpers.Attach;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;

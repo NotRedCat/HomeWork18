@@ -1,10 +1,8 @@
-package demowebshopTests.tests;
+package diplomTests.tests;
 
 import com.github.javafaker.Faker;
 
-import static demowebshopTests.utils.RandomUtils.getRandomGender;
-
-    public class TestData {
+public class TestData {
          static Faker faker = new Faker();
         public static String
                 firstName = faker.name().firstName(),

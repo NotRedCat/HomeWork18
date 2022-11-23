@@ -1,4 +1,4 @@
-package tests;
+package diplomTests.tests;
 
 import com.codeborne.selenide.CollectionCondition;
 import org.junit.jupiter.api.Test;
@@ -12,14 +12,11 @@ public class DnsTests {
 
     @Test
     void checkAddProductToWishlist() {
-        mainPage.openMainPage();
-        mainPage.clickWishlist();
-        open("https://www.dns-shop.ru/profile/wishlist/");
-        $(".profile-wishlist__empty-text").shouldHave(text("В списке пока нет ни одного избранного товара"));
-        open("https://www.dns-shop.ru/catalog/17a8a05316404e77/planshety/");
-        $$("div.catalog-product a").first().click();
-        $(".wishlist-btn").click();
-        $(".wishlist-link__badge").shouldHave(text("1"));
+        mainPage
+                .openWishList()
+                .checkWishlistIsEmpty()
+                .addProductInWishlist()
+                .checkWishlistIsNotEmpty();
     }
 
     @Test
