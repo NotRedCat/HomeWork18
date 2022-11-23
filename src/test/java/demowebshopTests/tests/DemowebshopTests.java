@@ -66,6 +66,42 @@ registrationPage.openRegisterPage()
         open("https://ampero.ru/authorization.html");
 
     }
+
+    @Test
+    void CardUIAndApi(){
+        step("Создание пользователя чере запрос", () ->
+        {
+            CardApi();
+        });
+        step("Создание пользователя чере запрос", () ->
+        {
+            registrationPage.openRegisterPage()
+                    .setEmail(email)
+                    .setPassword(password)
+                    .clickAuthButton();
+        });
+
+    }
+
+
+    void CardApi() {
+
+        given()
+                .log().uri()
+                .log().body()
+                .contentType("application/x-www-form-urlencoded; charset=UTF-8")
+                .when()
+                .post("https://ampero.ru/assets/components/office/action.php")
+                .then()
+                .log().status()
+                .log().body()
+                .statusCode(200);
+
+        open("https://ampero.ru/images/logo.jpeg");
+        open("https://ampero.ru/authorization.html");
+
+    }
+
 }
 
 
